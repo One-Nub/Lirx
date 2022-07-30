@@ -1,0 +1,30 @@
+# Example toml command layout based on Discord's example.
+# Discord's example: https://discord.com/developers/docs/interactions/application-commands#making-a-global-command 
+
+name = "blep"
+description = "Send a random adorable animal photo"
+# https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
+type = 1 # Chat
+
+[[options]] # Option 1
+    # Indent is optional, simply stylistic.
+    name = "animal"
+    description = "The type of animal"
+
+    # https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
+    type = 3 # String
+    required = true
+
+    # https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
+    choices = [
+        {name = "Dog", value = "animal_dog"},
+        {name = "Cat", value = "animal_cat"},
+        {name = "Penguin", value = "animal_penguin"}
+    ]
+
+
+[[options]] # Option 2
+    name = "only_smol"
+    description = "Whether to show only baby animals"
+    type = 5 # Boolean
+    required = false

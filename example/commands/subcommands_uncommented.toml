@@ -1,0 +1,84 @@
+# Example subcommand layout based upon Discord's example.
+# Discord's example: https://discord.com/developers/docs/interactions/application-commands#example-walkthrough
+
+name = "permissions"
+description = "Get or edit permissions for a user or a role"
+
+[[options]]
+name = "user"
+description = "Get or edit permissions for a user"
+type = 2
+
+    [[options.options]]
+    name = "get"
+    description = "Get permissions for a user"
+    type = 1
+
+        [[options.options.options]]
+        name = "user"
+        description = "The user to get"
+        type = 6
+        required = true
+
+        [[options.options.options]]
+        name = "channel"
+        description = "The channel permissions to get. If omitted, the guild permissions will be returned"
+        type = 7
+        required = false
+
+    [[options.options]]
+    name = "edit"
+    description = "Edit permissions for a user"
+    type = 1
+
+        [[options.options.options]]
+        name = "user"
+        description = "The user to edit"
+        type = 6
+        required = true
+
+        [[options.options.options]]
+        name = "channel"
+        description = "The channel permissions to edit. If omitted, the guild permissions will be edited"
+        type = 7
+        required = false
+
+
+[[options]]
+name = "role"
+description = "Get or edit permissions for a role"
+type = 2
+
+    [[options.options]]
+    name = "get"
+    description = "Get permissions for a role"
+    type = 1
+
+        [[options.options.options]]
+        name = "role"
+        description = "The role to get"
+        type = 8
+        required = true
+
+        [[options.options.options]]
+        name = "channel"
+        description = "The channel permissions to get. If omitted, the guild permissions will be returned"
+        type = 7
+        required = false
+
+    [[options.options]]
+    name = "edit"
+    description = "Edit permissions for a role"
+    type = 1
+
+        [[options.options.options]]
+        name = "role"
+        description = "The role to edit"
+        type = 8
+        required = true
+
+        [[options.options.options]]
+        name = "channel"
+        description = "The channel permissions to edit. If omitted, the guild permissions will be edited"
+        type = 7
+        required = false
