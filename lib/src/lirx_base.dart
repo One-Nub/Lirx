@@ -20,12 +20,12 @@ class Lirx {
   /// Client in charge of making REST requests to Discord's api.
   late final DiscordAPI apiClient;
 
-  /// List of all the commands that have been loaded into Lirx through 
+  /// List of all the commands that have been loaded into Lirx through
   /// [Lirx.loadCommandMap()], [Lirx.loadCommandFile()], and [Lirx.loadCommandFiles()].
   ///
   /// Only used for bulk publishing, any other methods require the use of providing
   /// a single [CommandMap] as necessary.
-  /// 
+  ///
   /// This is not updated under any instance of editing or deleting published commands, as the
   /// designed use case is for Lirx to be for one-shot management, rather than being constantly
   /// running.
@@ -35,7 +35,7 @@ class Lirx {
   ///
   /// Also instantiates [apiClient], which can be then utilized from this Lirx instance, or
   /// created on it's own.
-  /// 
+  ///
   /// [botToken] is the token used to authenticate requests sent to Discord, and should be the
   /// token for a Bot account. <br>
   /// [applicationID] is the application ID for the bot/application. <br>
@@ -107,8 +107,8 @@ class Lirx {
   ///
   /// This is performed as Discord's bulk overwrite, so all application commands will be overwritten
   /// by the commands in [commandList]. New commands will count towards the daily create limits, existing
-  /// ones will not. 
-  /// 
+  /// ones will not.
+  ///
   /// Commands listed in [commandList] should follow the [CommandMap] structure. <br>
   /// Pass an empty list to [commandList] to clear all published commands either globally or in [guildID].
   /// If [commandList] is not passed, the generated [Lirx.commandList] will be used.
@@ -117,7 +117,7 @@ class Lirx {
     http.Response response = (guildID == null)
         ? await apiClient.bulkOverwriteApplicationCommands(commandList)
         : await apiClient.bulkOverwriteApplicationCommands(commandList, guildID: guildID);
-    
+
     return jsonDecode(response.body);
   }
 
@@ -155,7 +155,7 @@ class Lirx {
   /// Get all published commands either globally or in a [guildID], along with optionally [withLocalizations].
   ///
   /// When [withLocalizations] is true, the full localization dictionaries stored by discord
-  /// will be returned. The expected list will be empty if there are no global commands, 
+  /// will be returned. The expected list will be empty if there are no global commands,
   /// and if there are they will follow the [CommandMap] structure.
   Future<List<dynamic>> bulkGetCommands({BigInt? guildID, bool withLocalizations = false}) async {
     http.Response response = (guildID == null)
@@ -181,12 +181,12 @@ class Lirx {
   }
 
   /// Edit the [permissions] for the command [commandID] in [guildID].
-  /// 
+  ///
   /// This endpoint requires a Bearer token, and will not work with a Bot token.
   /// Permissions must follow the application command permissions format.
-  /// 
+  ///
   /// More info found here:
-  /// https://discord.com/developers/docs/interactions/application-commands#permissions 
+  /// https://discord.com/developers/docs/interactions/application-commands#permissions
   Future<CommandMap> editCommandPermissions(List<dynamic> permissions,
       {required BigInt commandID, required BigInt guildID, required String bearerToken}) async {
     http.Response response = await apiClient.editApplicationCommandPermissions(permissions,
