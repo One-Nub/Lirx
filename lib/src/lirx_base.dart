@@ -5,7 +5,7 @@ import 'package:toml/toml.dart';
 
 import 'discord_api.dart';
 
-/// Representation of a JSON map, definded specifically for commands, but can be used for anything
+/// Representation of a JSON map, defined specifically for commands, but can be used for anything
 /// requiring the Map<String, dynamic> type.
 typedef CommandMap = Map<String, dynamic>;
 
@@ -17,7 +17,7 @@ class Lirx {
   /// ID of the Application that the Bot account is a part of. Used to instantiate [apiClient].
   final BigInt applicationID;
 
-  /// Cilent in charge of making REST requests to Discord's api.
+  /// Client in charge of making REST requests to Discord's api.
   late final DiscordAPI apiClient;
 
   /// List of all the commands that have been loaded into Lirx through 
@@ -94,7 +94,7 @@ class Lirx {
   ///
   /// Returns with the representation of the command after being published to discord, which includes
   /// information such as localizations and the command id. If there is an error, the response will
-  /// be the body explaining why the error occured.
+  /// be the body explaining why the error occurred.
   Future<CommandMap> publishCommand(CommandMap command, {BigInt? guildID}) async {
     http.Response response = (guildID == null)
         ? await apiClient.createApplicationCommand(command)
@@ -183,7 +183,7 @@ class Lirx {
   /// Edit the [permissions] for the command [commandID] in [guildID].
   /// 
   /// This endpoint requires a Bearer token, and will not work with a Bot token.
-  /// Permissions must follow the applicaton command permissions format.
+  /// Permissions must follow the application command permissions format.
   /// 
   /// More info found here:
   /// https://discord.com/developers/docs/interactions/application-commands#permissions 

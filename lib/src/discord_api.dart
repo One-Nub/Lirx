@@ -132,7 +132,7 @@ class DiscordAPI {
   /// Edit the [permissions] for the command [commandID] in [guildID].
   /// 
   /// This endpoint requires a Bearer token, and will not work with a Bot token.
-  /// Permissions must follow the applicaton command permissions format.
+  /// Permissions must follow the application command permissions format.
   /// 
   /// More info found here:
   /// https://discord.com/developers/docs/interactions/application-commands#permissions 
