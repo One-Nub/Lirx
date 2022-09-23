@@ -112,7 +112,7 @@ class Lirx {
   /// Commands listed in [commandList] should follow the [CommandMap] structure. <br>
   /// Pass an empty list to [commandList] to clear all published commands either globally or in [guildID].
   /// If [commandList] is not passed, the generated [Lirx.commandList] will be used.
-  Future<List<dynamic>> bulkPublishCommands({List<dynamic>? commandList, BigInt? guildID}) async {
+  Future<dynamic> bulkPublishCommands({List<dynamic>? commandList, BigInt? guildID}) async {
     commandList ??= this.commandList;
     http.Response response = (guildID == null)
         ? await apiClient.bulkOverwriteApplicationCommands(commandList)
@@ -157,7 +157,7 @@ class Lirx {
   /// When [withLocalizations] is true, the full localization dictionaries stored by discord
   /// will be returned. The expected list will be empty if there are no global commands,
   /// and if there are they will follow the [CommandMap] structure.
-  Future<List<dynamic>> bulkGetCommands({BigInt? guildID, bool withLocalizations = false}) async {
+  Future<dynamic> bulkGetCommands({BigInt? guildID, bool withLocalizations = false}) async {
     http.Response response = (guildID == null)
         ? await apiClient.getAllApplicationCommands(withLocalizations: withLocalizations)
         : await apiClient.getAllApplicationCommands(guildID: guildID, withLocalizations: withLocalizations);
