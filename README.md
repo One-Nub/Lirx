@@ -70,10 +70,10 @@ Plus, that's not to say Lirx can't be hooked into processes where command functi
 
 --- 
 ## _So is it good for me?_
-Well, it depends! Do you want to control the creation, updating, and deletion of your application commands from a separate controller compared to other popular libraries/frameworks which have it all in one? And also, do you want to write out command representations in TOML? If so, then great! This is for you.
+Well, it depends! Do you want to control the creation, updating, and deletion of your application commands from a separate controller compared to other popular libraries/frameworks which have it all in one? If so, then great! This is for you.
 
-Given the low level nature of this library though, this is not very beginner friendly. It practically requires the Discord documentation to be open at all times when writing commands since there are no tooltips or autofills for TOML. 
+Given the low level nature of this library though, this is not very beginner friendly. It practically requires the Discord documentation to be open at all times when writing commands since there are no tooltips or autofills. 
 
 Along with that, Lirx is just for creating commands - there is no built-in way to recieve or handle the interactions spawned by these commands after they are published. That's left up to you!
 
-I personally plan on updating [Onyx](https://github.com/One-Nub/Onyx) to work along with this package, so that Onyx will handle interaction dispatching to implementation functions.
+If you are looking for a library to handle interactions in dart, check out [Onyx](https://github.com/One-Nub/Onyx).
