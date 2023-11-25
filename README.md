@@ -1,5 +1,5 @@
 # Lirx
-Toml-based Discord [application command](https://discord.com/developers/docs/interactions/application-commands) management. No more, no less.
+Discord [application command](https://discord.com/developers/docs/interactions/application-commands) management. No more, no less. <br> Supports JSON, TOML, and YAML formats.
 
 ---
 
@@ -18,7 +18,7 @@ import 'package:lirx/lirx.dart';
 
 ## Usage
 
-> **Be warned! Lirx does not validate the TOML representations to see if they are considered valid Discord commands. That is up to you to validate before publishing commands to Discord!**
+> **Be warned! Lirx does not validate the representations given to see if they are considered valid Discord commands. That is up to you to validate before publishing commands to Discord!**
 
 ### Sample Dart file.
 ```dart

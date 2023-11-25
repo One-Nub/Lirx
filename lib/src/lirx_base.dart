@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:toml/toml.dart';
+import 'package:yaml/yaml.dart';
 
 import 'discord_api.dart';
 
@@ -64,21 +66,43 @@ class Lirx {
     return document.toMap();
   }
 
+  /// Helper method converting a TAML file to a [CommandMap].
+  Future<CommandMap> yamlToMap(String filePath) async {
+    String fileString = await File(filePath).readAsString();
+    var document = await loadYaml(fileString);
+    return document;
+  }
+
   /// Adds a [CommandMap] to [commandList] and returns the map passed.
   CommandMap loadCommandMap(CommandMap commandMap) {
     commandList.add(commandMap);
     return commandMap;
   }
 
-  /// Loads a TOML file representing a [CommandMap] found at [tomlPath].
+  /// Loads a file representing a [CommandMap] found at [filePath].
   ///
   /// The path provided will depend on the root directory from which the program is ran.
   /// Returns the parsed [CommandMap] after adding it to the [commandList].
-  Future<CommandMap> loadCommandFile(String tomlPath) async {
-    return loadCommandMap(await tomlToMap(tomlPath));
+  Future<CommandMap> loadCommandFile(String filePath) async {
+    CommandMap? output;
+
+    if (filePath.endsWith("toml")) {
+      output = await tomlToMap(filePath);
+    } else if (filePath.endsWith("yaml")) {
+      output = await yamlToMap(filePath);
+    } else if (filePath.endsWith("json")) {
+      String fileContent = await File(filePath).readAsString();
+      output = jsonDecode(fileContent);
+    }
+
+    if (output == null) {
+      throw ArgumentError("No valid file type to process was found.");
+    }
+
+    return loadCommandMap(output);
   }
 
-  /// Loads multiple TOML files representing [CommandMap]s from [pathList].
+  /// Loads multiple files representing [CommandMap]s from [pathList].
   ///
   /// The paths provided will depend on the root directory from which the program is ran.
   /// Returns the created [commandList] after all files have been loaded.
