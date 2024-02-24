@@ -7,7 +7,7 @@ import 'lirx_base.dart';
 /// Responsible for sending REST request to Discord's api endpoints.
 class DiscordAPI {
   /// Library user agent as required by Discord.
-  static const String _userAgent = "Lirx (https://github.com/One-Nub/lirx, 1.0.0)";
+  static const String _userAgent = "DiscordBot (https://github.com/One-Nub/lirx, 1.0.0)";
 
   /// Upstream base URL that Lirx will be forwarding requests to.
   final String discordURL;
